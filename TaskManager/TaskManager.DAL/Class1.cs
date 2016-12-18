@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TaskManager.Portal.DAL
+namespace TaskManager.DAL
 {
     public class Class1
     {
