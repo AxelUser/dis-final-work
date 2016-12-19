@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using TaskManager.Portal.BLL.DTO;
 
 namespace TaskManager.Portal.Controllers
 {
@@ -16,7 +17,8 @@ namespace TaskManager.Portal.Controllers
 
 
         [HttpPost]
-        public ActionResult Login()
+        [ValidateAntiForgeryToken]
+        public ActionResult Login(LoginViewModel model)
         {
             
         }

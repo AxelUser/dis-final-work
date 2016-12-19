@@ -183,7 +183,12 @@
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\TaskManager.Portal.BLL\TaskManager.Portal.BLL.csproj">
+      <Project>{94925898-4cb4-46e1-8943-1f00508edf1e}</Project>
+      <Name>TaskManager.Portal.BLL</Name>
+    </ProjectReference>
+  </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
     <None Include="Project_Readme.html" />
