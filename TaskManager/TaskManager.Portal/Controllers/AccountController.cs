@@ -20,7 +20,7 @@ namespace TaskManager.Portal.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Login(LoginViewModel model)
         {
-            
+            return View();
         }
 
         public ActionResult Register()
