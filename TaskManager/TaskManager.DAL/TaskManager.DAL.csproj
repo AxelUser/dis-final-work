@@ -54,6 +54,7 @@
     <Compile Include="Entities\ExecutorRole.cs" />
     <Compile Include="Entities\ExecutorRoleType.cs" />
     <Compile Include="Entities\Project.cs" />
+    <Compile Include="Entities\TaskManagerDbInitializer.cs" />
     <Compile Include="Entities\TaskStatusType.cs" />
     <Compile Include="Entities\ProjectTask.cs" />
     <Compile Include="Entities\TaskManagerContext.cs" />
