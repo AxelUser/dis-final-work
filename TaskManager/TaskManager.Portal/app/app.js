@@ -1,6 +1,8 @@
 ﻿; (function () {
     angular
-        .module('app', ['ngRoute', 'ngSanitize', 'ngDialog']);
+        .module('app', ['ngRoute', 'ngSanitize', 'ngDialog',
+            
+        ]);
     angular.module('app')
         .config(['$locationProvider', '$routeProvider',
             function config($locationProvider, $routeProvider) {
@@ -15,12 +17,7 @@
                         templateUrl: 'app/views/projects.html',
                         controller: 'ProjectsController'
                     })
-                    .when('/project/{id}', {
-                        title: 'Проекты',
-                        templateUrl: 'app/views/tasks.html',
-                        controller: 'TasksController'
-                    })
-                    .when('/task/{id}', {
+                    .when('/task/:id', {
                         title: 'Проекты',
                         templateUrl: 'app/views/projects.html',
                         controller: 'ProjectsController'
@@ -29,8 +26,7 @@
             }])
         .config(['ngDialogProvider', function (ngDialogProvider) {
             ngDialogProvider.setDefaults({
-                className: 'ngdialog-theme-default',
-                plain: true,
+                className: 'ngdialog-custom-theme',
                 showClose: true,
                 closeByDocument: true,
                 closeByEscape: true

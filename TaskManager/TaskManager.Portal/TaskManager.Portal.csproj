@@ -122,7 +122,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="app\services\" />
     <Folder Include="App_Data\" />
     <Folder Include="Areas\" />
     <Folder Include="Models\" />
@@ -142,6 +141,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="app\controllers\project-controller.js" />
+    <Content Include="app\controllers\task-controller.js" />
+    <Content Include="app\controllers\executor-controller.js" />
     <Content Include="app\controllers\tasks-controller.js" />
     <Content Include="app\controllers\projects-controller.js" />
     <Content Include="app\controllers\main-controller.js" />
@@ -179,6 +181,14 @@
     <Content Include="app\node_modules\ng-dialog\tests\unit\ngDialog_close.js" />
     <Content Include="app\node_modules\ng-dialog\tests\unit\ngDialog_closeThisDialog.js" />
     <Content Include="app\node_modules\ng-dialog\tests\unit\ngDialog_insideDirective.js" />
+    <Content Include="app\services\role-service.js" />
+    <Content Include="app\services\status-service.js" />
+    <Content Include="app\services\user-service.js" />
+    <Content Include="app\services\task-service.js" />
+    <Content Include="app\services\project-service.js" />
+    <Content Include="app\views\executor.html" />
+    <Content Include="app\views\task.html" />
+    <Content Include="app\views\project.html" />
     <Content Include="app\views\tasks.html" />
     <Content Include="app\views\projects.html" />
     <Content Include="app\views\main.html" />

@@ -28,20 +28,34 @@ namespace TaskManager.Portal
                       "~/app/node_modules/ng-dialog/js/ngDialog.min.js"
                       ));
 
-            bundles.Add(new ScriptBundle("~/bundles/frontapp").Include(
-                "~/app/app.js",
+            bundles.Add(new ScriptBundle("~/bundles/frontapp-init").Include(
+                "~/app/app.js"
+                ));
+
+            bundles.Add(new ScriptBundle("~/bundles/frontapp-service").Include(
+                "~/app/services/project-service.js",
+                "~/app/services/task-service.js",
+                "~/app/services/status-service.js",
+                "~/app/services/role-service.js",
+                "~/app/services/user-service.js"
+                ));
+
+            bundles.Add(new ScriptBundle("~/bundles/frontapp-controller").Include(
                 "~/app/directives/scroll.js",
                 "~/app/controllers/menu-controller.js",
                 "~/app/controllers/main-controller.js",
                 "~/app/controllers/tasks-controller.js",
-                "~/app/controllers/projects-controller.js"
+                "~/app/controllers/task-controller.js",
+                "~/app/controllers/projects-controller.js",
+                "~/app/controllers/project-controller.js",
+                "~/app/controllers/executor-controller.js"
                 ));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
                       "~/app/node_modules/ng-dialog/css/ngDialog.min.css",
-                      "~/app/node_modules/ng-dialog/css/ngDialog-theme-plain.min.css",
                       "~/app/node_modules/ng-dialog/css/ngDialog-theme-default.min.css",
+                      "~/app/node_modules/ng-dialog/css/ngDialog-theme-plain.min.css",
                       "~/Content/site.css"
                       ));
         }

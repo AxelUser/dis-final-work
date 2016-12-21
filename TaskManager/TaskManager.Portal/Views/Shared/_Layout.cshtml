@@ -8,13 +8,27 @@
     @Scripts.Render("~/bundles/modernizr")
 </head>
 <body>
-    @RenderBody()
-
+    <header ng-controller="MenuController">
+        <h1 id="logo">
+            LOGO
+        </h1>
+        <nav>
+            <a ng-href="#/">Home</a>
+            <a ng-href="#/projects">Projects</a>
+            <a ng-href="#/tasks">Tasks</a>
+            <a>SIGN UP</a>
+        </nav>
+    </header>
+    <div>
+        @RenderBody()
+    </div>
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @Scripts.Render("~/bundles/angular")
-    @Scripts.Render("~/bundles/frontapp")
+    @Scripts.Render("~/bundles/frontapp-init")
+    @Scripts.Render("~/bundles/frontapp-service")
+    @Scripts.Render("~/bundles/frontapp-controller")
     @RenderSection("scripts", required: false)
 </body>
 </html>

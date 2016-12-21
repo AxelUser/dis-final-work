@@ -1,3 +1,49 @@
 ﻿<div>
-    Projects PRODFKSDFJLKSD
+    <div style="width: 100%; height: 50px;" class="row">
+        <h2 class="col-md-5 col-md-offset-1">
+            Проекты
+        </h2>
+        <!--<div style="margin: 15px 15px 0 0;"  class="col-md-5">
+
+        </div>-->
+    </div>
+    <table class="table table-hover">
+        <thead class="bg-info">
+            <tr>
+                <td>
+                    <strong>Название проекта</strong>
+                </td>
+                <td>
+                    <strong>Владелец проекта</strong>
+                </td>
+                <td style="width: 120px;">
+                    <button type="button" class="btn btn-sm btn-success pull-right"
+                            style="margin-right: 5px;"
+                            ng-click="newProject()">
+                        <i class="glyphicon glyphicon-plus"></i>
+                    </button>
+                </td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="project in projects">
+                <td>{{project.Title}}</td>
+                <td>{{project.User.FullName}}</td>
+                <td class="btn-group btn-group-sm">
+                    <button type="button" class="btn btn-info"
+                            ng-click="viewProject(project)">
+                        <i class="glyphicon glyphicon-eye-open" aria-hidden="true"></i>
+                    </button>
+                    <button type="button" class="btn btn-primary"
+                            ng-click="editProject(project)">
+                        <i class="glyphicon glyphicon-pencil" aria-hidden="true"></i>
+                    </button>
+                    <button type="button" class="btn btn-danger"
+                            ng-click="removeProject(project)">
+                        <i class="glyphicon glyphicon-remove" aria-hidden="true"></i>
+                    </button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
 </div>
