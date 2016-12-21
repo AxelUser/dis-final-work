@@ -32,7 +32,7 @@ namespace TaskManager.Portal.Controllers
             {
                 if (await authService.IsUserCredentialsCorrectAsync(model))
                 {
-                    FormsAuthentication.GetAuthCookie(model.Email, true);
+                    FormsAuthentication.SetAuthCookie(model.Email, true);
                     return RedirectToAction("Index", "Home");
                 }
                 else
@@ -58,7 +58,7 @@ namespace TaskManager.Portal.Controllers
                 {
                     await authService.RegisterUser(model);
 
-                    FormsAuthentication.GetAuthCookie(model.Email, true);
+                    FormsAuthentication.SetAuthCookie(model.Email, true);
                     return RedirectToAction("Index", "Home");
                 }
                 else
