@@ -23,8 +23,9 @@ namespace TaskManager.Portal.BLL.Servicies
         {
             using(TaskManagerContext db = new TaskManagerContext())
             {
+                var passwordHash = GetPasswordHash(model.Password);
                 var user = await db.Users.FirstOrDefaultAsync(u => u.Email == model.Email
-                    && u.PasswordHash == GetPasswordHash(model.Password));
+                    && u.PasswordHash == passwordHash);
                 return user != null;
             }
         }
