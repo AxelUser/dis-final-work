@@ -33,10 +33,7 @@ namespace TaskManager.ServiceBus.Handler
                             int id = int.Parse(headers[key].ToString());
                             writer.Write(id);
                         }
-                        using(BinaryReader reader = new BinaryReader(stream, Encoding.UTF8, true))
-                        {
-                            return reader.ReadBoolean();
-                        }
+                        return true;
                     }
                     catch
                     {

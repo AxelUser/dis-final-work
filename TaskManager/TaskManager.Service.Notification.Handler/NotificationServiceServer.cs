@@ -19,11 +19,23 @@ namespace TaskManager.Service.Notification.Handler
 
         public NotificationServiceServer(int port, string smtpLogin, string smtpPassword)
         {
+            cts = new CancellationTokenSource();
             IPAddress localhost = IPAddress.Parse("127.0.0.1");
-            listener = new TcpListener(localhost, port);
+            listener = new TcpListener(localhost, port);            
             EmailSender sender = new EmailSender(smtpLogin, smtpPassword);
             handler = new NotificationHandler(sender);
-            cts = new CancellationTokenSource();
+            
+        }
+
+        public void Start()
+        {
+            Listening(cts.Token, listener);
+        }
+
+        public void Stop()
+        {
+            cts.Cancel();
+            handler.StopSendingTasks();
         }
 
         private void Listening(CancellationToken ct, TcpListener listener)
@@ -37,13 +49,13 @@ namespace TaskManager.Service.Notification.Handler
                 }
                 catch
                 {
-                    if (getClientTask.IsCompleted)
-                    {
-                        var client = getClientTask.Result;
-                        HandleClient(ct, client);
-                    }
+
                 }
-                
+                if (getClientTask.IsCompleted)
+                {
+                    var client = getClientTask.Result;
+                    HandleClient(ct, client);
+                }
             }
         }
 
@@ -66,13 +78,9 @@ namespace TaskManager.Service.Notification.Handler
                         }
                         if (readIntTask.IsCompleted)
                         {
-
+                            int taskId = readIntTask.Result;
+                            handler.RunSending(taskId);
                         }
-                        //handler.RunSending()
-                    }
-                    using (BinaryWriter reader = new BinaryWriter(stream, Encoding.UTF8, true))
-                    {
-
                     }
                 }
             }         
