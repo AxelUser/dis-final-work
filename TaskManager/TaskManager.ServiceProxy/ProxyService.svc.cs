@@ -6,17 +6,32 @@ using System.ServiceModel;
 using System.ServiceModel.Web;
 using System.Text;
 using RabbitMQ.Client;
+using System.Configuration;
 
 namespace TaskManager.ServiceProxy
 {
     public class ProxyService : IProxyService
     {
         private IConnection connection;
-        readonly string qNotify = "q_notify";
-        readonly string qReport = "q_report";
+        readonly string qNotify;
+        readonly string qReport;
         public ProxyService()
         {
-            var factory = new ConnectionFactory() { HostName = "localhost" };
+            qNotify = GetSetting("QueueNotifyName", "q_notify");
+            qReport = GetSetting("QueueReportName", "q_report");
+            string username = GetSetting("MQUserName", "guest");
+            string password = GetSetting("MQPassword", "guest");
+            string vitualhost = GetSetting("MQVirtualHost", "/");
+            string hostname = GetSetting("MQHostName", "localhost");
+            string port = GetSetting("MQPort", "5672");
+            var factory = new ConnectionFactory()
+            {
+                UserName = username,
+                Password = password,
+                VirtualHost = vitualhost,
+                HostName = hostname,
+                Port = int.Parse(port)
+            };
             connection = factory.CreateConnection();
         }
         public void Notify(int taskId)
@@ -46,7 +61,7 @@ namespace TaskManager.ServiceProxy
             using (IModel channel = connection.CreateModel())
             {
                 var props = channel.CreateBasicProperties();
-                props.Headers.Add("task-id", projectId.ToString());
+                props.Headers.Add("project-id", projectId.ToString());
                 channel.QueueDeclare(
                     queue: qReport,
                     durable: false,
@@ -60,6 +75,18 @@ namespace TaskManager.ServiceProxy
                     routingKey: qReport,
                     basicProperties: null,
                     body: body);
+            }
+        }
+
+        private static string GetSetting(string key, string defValue = null)
+        {
+            try
+            {
+                return ConfigurationManager.AppSettings[key];
+            }
+            catch
+            {
+                return defValue;
             }
         }
     }
