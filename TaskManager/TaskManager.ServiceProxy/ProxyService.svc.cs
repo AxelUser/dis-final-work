@@ -7,6 +7,7 @@ using System.ServiceModel.Web;
 using System.Text;
 using RabbitMQ.Client;
 using System.Configuration;
+using TaskManager.Utils;
 
 namespace TaskManager.ServiceProxy
 {
@@ -17,13 +18,13 @@ namespace TaskManager.ServiceProxy
         readonly string qReport;
         public ProxyService()
         {
-            qNotify = GetSetting("QueueNotifyName", "q_notify");
-            qReport = GetSetting("QueueReportName", "q_report");
-            string username = GetSetting("MQUserName", "guest");
-            string password = GetSetting("MQPassword", "guest");
-            string vitualhost = GetSetting("MQVirtualHost", "/");
-            string hostname = GetSetting("MQHostName", "localhost");
-            string port = GetSetting("MQPort", "5672");
+            qNotify = ConfigurationUtils.GetSetting("QueueNotifyName", "q_notify");
+            qReport = ConfigurationUtils.GetSetting("QueueReportName", "q_report");
+            string username = ConfigurationUtils.GetSetting("MQUserName", "guest");
+            string password = ConfigurationUtils.GetSetting("MQPassword", "guest");
+            string vitualhost = ConfigurationUtils.GetSetting("MQVirtualHost", "/");
+            string hostname = ConfigurationUtils.GetSetting("MQHostName", "localhost");
+            string port = ConfigurationUtils.GetSetting("MQPort", "5672");
             var factory = new ConnectionFactory()
             {
                 UserName = username,
@@ -75,18 +76,6 @@ namespace TaskManager.ServiceProxy
                     routingKey: qReport,
                     basicProperties: null,
                     body: body);
-            }
-        }
-
-        private static string GetSetting(string key, string defValue = null)
-        {
-            try
-            {
-                return ConfigurationManager.AppSettings[key];
-            }
-            catch
-            {
-                return defValue;
             }
         }
     }
