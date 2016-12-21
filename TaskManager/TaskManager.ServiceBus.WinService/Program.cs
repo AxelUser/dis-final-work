@@ -14,12 +14,20 @@ namespace TaskManager.ServiceBus.WinService
         /// </summary>
         static void Main()
         {
-            ServiceBase[] ServicesToRun;
-            ServicesToRun = new ServiceBase[]
+            if (Environment.UserInteractive)
             {
-                new Service1()
-            };
-            ServiceBase.Run(ServicesToRun);
+                ServiceBus serivce = new ServiceBus();
+                serivce.TestSerivce();
+            }
+            else
+            {
+                ServiceBase[] ServicesToRun;
+                ServicesToRun = new ServiceBase[]
+                {
+                new ServiceBus()
+                };
+                ServiceBase.Run(ServicesToRun);
+            }
         }
     }
 }

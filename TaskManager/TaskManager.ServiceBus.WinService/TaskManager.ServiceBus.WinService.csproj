@@ -44,17 +44,27 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Service1.cs">
+    <Compile Include="ServiceBus.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Service1.Designer.cs">
-      <DependentUpon>Service1.cs</DependentUpon>
+    <Compile Include="ServiceBus.Designer.cs">
+      <DependentUpon>ServiceBus.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\TaskManager.ServiceBus.Handler\TaskManager.ServiceBus.Handler.csproj">
+      <Project>{0bc8d5b9-186c-4ba2-8b03-2f550a355320}</Project>
+      <Name>TaskManager.ServiceBus.Handler</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TaskManager.Utils\TaskManager.Utils.csproj">
+      <Project>{6be54e95-5731-458c-a6a4-d37f449f0475}</Project>
+      <Name>TaskManager.Utils</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

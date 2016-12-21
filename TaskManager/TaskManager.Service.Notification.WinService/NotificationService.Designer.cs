@@ -1,6 +1,6 @@
-﻿namespace TaskManager.ServiceBus.WinService
+﻿namespace TaskManager.Service.Notification.WinService
 {
-    partial class Service1
+    partial class NotificationService
     {
         /// <summary> 
         /// Required designer variable.

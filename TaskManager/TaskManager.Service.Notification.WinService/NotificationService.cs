@@ -8,11 +8,11 @@ using System.ServiceProcess;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TaskManager.ServiceBus.WinService
+namespace TaskManager.Service.Notification.WinService
 {
-    public partial class Service1 : ServiceBase
+    public partial class NotificationService : ServiceBase
     {
-        public Service1()
+        public NotificationService()
         {
             InitializeComponent();
         }
