@@ -24,7 +24,9 @@ namespace TaskManager.Portal
             bundles.Add(new ScriptBundle("~/bundles/angular").Include(
                       "~/Scripts/angular.min.js",
                       "~/Scripts/angular-route.min.js",
-                      "~/Scripts/angular-sanitize.min.js"));
+                      "~/Scripts/angular-sanitize.min.js",
+                      "~/app/node_modules/ng-dialog/js/ngDialog.min.js"
+                      ));
 
             bundles.Add(new ScriptBundle("~/bundles/frontapp").Include(
                 "~/app/app.js",
@@ -37,7 +39,11 @@ namespace TaskManager.Portal
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
-                      "~/Content/site.css"));
+                      "~/app/node_modules/ng-dialog/css/ngDialog.min.css",
+                      "~/app/node_modules/ng-dialog/css/ngDialog-theme-plain.min.css",
+                      "~/app/node_modules/ng-dialog/css/ngDialog-theme-default.min.css",
+                      "~/Content/site.css"
+                      ));
         }
     }
 }

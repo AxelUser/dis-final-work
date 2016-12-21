@@ -6,6 +6,6 @@
         .controller('ProjectsController', ProjectsController);
 
     function ProjectsController($scope) {
-        console.log('dshsdfkjhdfskjsfhkjsdh')
+
     };
 })();

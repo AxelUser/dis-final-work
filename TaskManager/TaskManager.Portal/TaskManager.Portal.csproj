@@ -146,6 +146,39 @@
     <Content Include="app\controllers\projects-controller.js" />
     <Content Include="app\controllers\main-controller.js" />
     <Content Include="app\directives\scroll.js" />
+    <Content Include="app\node_modules\ng-dialog\css\myth\ngDialog-theme-default.css" />
+    <Content Include="app\node_modules\ng-dialog\css\myth\ngDialog-theme-plain.css" />
+    <Content Include="app\node_modules\ng-dialog\css\myth\ngDialog.css" />
+    <Content Include="app\node_modules\ng-dialog\css\ngDialog-custom-width.css" />
+    <Content Include="app\node_modules\ng-dialog\css\ngDialog-theme-default.css" />
+    <Content Include="app\node_modules\ng-dialog\css\ngDialog-theme-default.min.css" />
+    <Content Include="app\node_modules\ng-dialog\css\ngDialog-theme-plain.css" />
+    <Content Include="app\node_modules\ng-dialog\css\ngDialog-theme-plain.min.css" />
+    <Content Include="app\node_modules\ng-dialog\css\ngDialog.css" />
+    <Content Include="app\node_modules\ng-dialog\css\ngDialog.min.css" />
+    <Content Include="app\node_modules\ng-dialog\example\browser-back-button\index.html" />
+    <Content Include="app\node_modules\ng-dialog\example\externalTemplate.html" />
+    <Content Include="app\node_modules\ng-dialog\example\index.html" />
+    <Content Include="app\node_modules\ng-dialog\example\inside-directive\inside-directive-plain.js" />
+    <Content Include="app\node_modules\ng-dialog\example\paddingTest.html" />
+    <Content Include="app\node_modules\ng-dialog\example\server.js" />
+    <Content Include="app\node_modules\ng-dialog\Gruntfile.js" />
+    <Content Include="app\node_modules\ng-dialog\js\ngDialog.js" />
+    <Content Include="app\node_modules\ng-dialog\js\ngDialog.min.js" />
+    <Content Include="app\node_modules\ng-dialog\karma.conf.js" />
+    <Content Include="app\node_modules\ng-dialog\protractor.conf.js" />
+    <Content Include="app\node_modules\ng-dialog\server.js" />
+    <Content Include="app\node_modules\ng-dialog\tests\build-systems\browserify\app.js" />
+    <Content Include="app\node_modules\ng-dialog\tests\build-systems\browserify\gulpfile.js" />
+    <Content Include="app\node_modules\ng-dialog\tests\build-systems\browserify\index.html" />
+    <Content Include="app\node_modules\ng-dialog\tests\protractor\close.js" />
+    <Content Include="app\node_modules\ng-dialog\tests\protractor\open.js" />
+    <Content Include="app\node_modules\ng-dialog\tests\protractor\test.js" />
+    <Content Include="app\node_modules\ng-dialog\tests\unit\before.js" />
+    <Content Include="app\node_modules\ng-dialog\tests\unit\ngDialog.js" />
+    <Content Include="app\node_modules\ng-dialog\tests\unit\ngDialog_close.js" />
+    <Content Include="app\node_modules\ng-dialog\tests\unit\ngDialog_closeThisDialog.js" />
+    <Content Include="app\node_modules\ng-dialog\tests\unit\ngDialog_insideDirective.js" />
     <Content Include="app\views\tasks.html" />
     <Content Include="app\views\projects.html" />
     <Content Include="app\views\main.html" />
@@ -206,6 +239,22 @@
     <Content Include="Scripts\angular-cookies.min.js.map" />
     <Content Include="Scripts\angular-aria.min.js.map" />
     <Content Include="Scripts\angular-animate.min.js.map" />
+    <Content Include="app\node_modules\ng-dialog\.editorconfig" />
+    <Content Include="app\node_modules\ng-dialog\.eslintrc" />
+    <Content Include="app\node_modules\ng-dialog\.github\ISSUE_TEMPLATE.md" />
+    <Content Include="app\node_modules\ng-dialog\.github\PULL_REQUEST_TEMPLATE.md" />
+    <Content Include="app\node_modules\ng-dialog\.jshintrc" />
+    <Content Include="app\node_modules\ng-dialog\.npmignore" />
+    <Content Include="app\node_modules\ng-dialog\.travis.yml" />
+    <Content Include="app\node_modules\ng-dialog\bower.json" />
+    <Content Include="app\node_modules\ng-dialog\CHANGELOG.md" />
+    <Content Include="app\node_modules\ng-dialog\CONTRIBUTING.md" />
+    <Content Include="app\node_modules\ng-dialog\example\README.md" />
+    <Content Include="app\node_modules\ng-dialog\package.json" />
+    <Content Include="app\node_modules\ng-dialog\README.md" />
+    <Content Include="app\node_modules\ng-dialog\tests\build-systems\browserify\.npmignore" />
+    <Content Include="app\node_modules\ng-dialog\tests\build-systems\browserify\package.json" />
+    <Content Include="app\node_modules\ng-dialog\tests\build-systems\browserify\README.md" />
     <None Include="Scripts\jquery-3.1.1.intellisense.js" />
     <Content Include="Scripts\angular-ui\ui-bootstrap-tpls.js" />
     <Content Include="Scripts\angular-ui\ui-bootstrap-tpls.min.js" />
@@ -970,6 +1019,10 @@
     <Content Include="Scripts\version.json" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\TaskManager.DAL\TaskManager.DAL.csproj">
+      <Project>{85cc861c-20d9-402a-89a5-0551df215510}</Project>
+      <Name>TaskManager.DAL</Name>
+    </ProjectReference>
     <ProjectReference Include="..\TaskManager.Portal.BLL\TaskManager.Portal.BLL.csproj">
       <Project>{94925898-4cb4-46e1-8943-1f00508edf1e}</Project>
       <Name>TaskManager.Portal.BLL</Name>
