@@ -41,19 +41,23 @@
                     }
                 ]);
             });
-            return $http.get('/Project/Index');
+            return $http.get('/Projects/Index');
         };
 
         this.getProject = function (id) {
-            return $http.get('/Project/' + id);
+            return $http.get('/Projects/' + id);
         }
 
         this.removeProject = function (id) {
-            return $http.delete('/Project/' + id);
+            return $http.delete('/Projects/' + id);
         }
 
         this.saveProject = function (data) {
-            return $http.post('/Project', data);
+            return $http.post('/Projects', data);
+        }
+
+        this.doExport = function (id) {
+            $http.get('/Projects/Export' + id)
         }
     };
 })();

@@ -79,5 +79,15 @@
                 }
             });
         };
+
+        $scope.doExport = function () {
+            ProjectService.doExport($scope.entity.Id)
+                .then(function (response) {
+
+                },
+                function (error) {
+
+                });
+        }
     };
 })();

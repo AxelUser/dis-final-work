@@ -17,11 +17,6 @@
                         templateUrl: 'app/views/projects.html',
                         controller: 'ProjectsController'
                     })
-                    .when('/task/:id', {
-                        title: 'Проекты',
-                        templateUrl: 'app/views/projects.html',
-                        controller: 'ProjectsController'
-                    })
                     .otherwise('/');
             }])
         .config(['ngDialogProvider', function (ngDialogProvider) {
