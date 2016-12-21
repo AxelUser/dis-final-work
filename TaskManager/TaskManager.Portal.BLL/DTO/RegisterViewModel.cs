@@ -10,7 +10,8 @@ namespace TaskManager.Portal.BLL.DTO
     public class RegisterViewModel
     {
         [Required]
-        public string Login { get; set; }
+        [EmailAddress(ErrorMessage = "Incorrect e-mail adress!")]
+        public string Email { get; set; }
 
         [Required]
         [DataType(DataType.Password)]
@@ -22,8 +23,6 @@ namespace TaskManager.Portal.BLL.DTO
         public string ConfirmPassword { get; set; }
 
         [Required]
-        [EmailAddress(ErrorMessage = "Incorrect e-mail adress!")]
-        public string Email { get; set; }
-        
+        public string FullName { get; set; }
     }
 }
