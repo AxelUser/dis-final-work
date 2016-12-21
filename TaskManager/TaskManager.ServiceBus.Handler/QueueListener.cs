@@ -25,7 +25,11 @@ namespace TaskManager.ServiceBus.Handler
                 {
                     model.BasicAck(ea.DeliveryTag, false);
                 }
-            };
+                else
+                {
+                    model.BasicNack(ea.DeliveryTag, false, !ea.Redelivered);
+                }
+            };       
             this.queueName = queueName;
         }
 

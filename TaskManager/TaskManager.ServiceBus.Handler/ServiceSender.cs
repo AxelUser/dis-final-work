@@ -28,10 +28,14 @@ namespace TaskManager.ServiceBus.Handler
                 {
                     try
                     {
-                        using (BinaryWriter writer = new BinaryWriter(stream))
+                        using (BinaryWriter writer = new BinaryWriter(stream, Encoding.UTF8, true))
                         {
-                            writer.Write(headers[key].ToString());
-                            return true;
+                            int id = int.Parse(headers[key].ToString());
+                            writer.Write(id);
+                        }
+                        using(BinaryReader reader = new BinaryReader(stream, Encoding.UTF8, true))
+                        {
+                            return reader.ReadBoolean();
                         }
                     }
                     catch

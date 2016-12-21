@@ -9,7 +9,7 @@ namespace TaskManager.DAL.Entities
         public TaskManagerContext()
             : base("name=TaskManagerContext")
         {
-            Database.SetInitializer(new TaskManagerDbInitializer());
+            //Database.SetInitializer(new TaskManagerDbInitializer());
         }
 
         public virtual DbSet<User> Users { get; set; }
