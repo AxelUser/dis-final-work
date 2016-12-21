@@ -1,0 +1,75 @@
+﻿<div>
+    <h3>
+        {{formTitle}}
+    </h3>
+    <form name="projectForm" id="projectForm">
+        <fieldset ng-disabled="controllerType == 'view'">
+            <div class="form-group">
+                <label for="Title">Название задачи</label>
+                <input type="text" class="form-control" id="Title" placeholder="Название задачи"
+                       ng-model="entityTask.Title">
+            </div>
+            <div class="form-group">
+                <label for="title">Название проекта</label>
+                <input type="number" class="form-control" id="EstimatedDifficult" placeholder="Количество очков"
+                       ng-model="entityTask.EstimatedDifficult">
+            </div>
+            <div class="form-group">
+                <label for="TaskStatusType">Статус</label>
+                <select class="form-control" id="TaskStatusType" ng-model="entityTask.TaskStatusType"
+                        ng-options="status.Caption for status in statuses track by status.Id">
+                </select>
+            </div>
+
+
+            <table class="table table-hover">
+                <thead class="bg-info">
+                    <tr>
+                        <td>
+                            <strong>Роль</strong>
+                        </td>
+                        <td>
+                            <strong>Исполнитель</strong>
+                        </td>
+                        <td style="width: 100px;" ng-if="controllerType != 'view'">
+                            <button type="button" class="btn btn-sm btn-success pull-right"
+                                    style="margin-right: 5px;"
+                                    ng-click="newExecutor()">
+                                <i class="glyphicon glyphicon-plus"></i>
+                            </button>
+                        </td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="executor in entityTask.Executors">
+                        <td>{{executor.RoleType.Caption}}</td>
+                        <td>{{executor.User.FullName}}</td>
+                        <td class="btn-group btn-group-sm" ng-if="controllerType != 'view'">
+                            <button type="button" class="btn btn-primary"
+                                    ng-click="editExecutor(executor)">
+                                <i class="glyphicon glyphicon-pencil" aria-hidden="true"></i>
+                            </button>
+                            <button type="button" class="btn btn-danger"
+                                    ng-click="removeExecutor(executor)">
+                                <i class="glyphicon glyphicon-remove" aria-hidden="true"></i>
+                            </button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+        </fieldset>
+        <div style="height: 50px;">
+            <div class="pull-right">
+                <button type="button" class="btn btn-success pull-left"
+                        style="margin-right: 15px"
+                         ng-click="saveTask()">
+                    <i class="glyphicon glyphicon-ok"></i>
+                </button>
+                <button class="btn btn-danger pull-right" ng-click="closeThisDialog()">
+                    <i class="glyphicon glyphicon-remove"></i>
+                </button>
+            </div>
+        </div>
+    </form>
+</div>

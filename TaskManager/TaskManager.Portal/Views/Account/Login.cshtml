@@ -1,39 +1,37 @@
 ﻿@{
     ViewBag.Title = "Login";
 }
-
-<h2>Login</h2>
-
-<form class="form-horizontal" action="@Url.Action("Login")" method="post">
-    <div class="form-group">
-        <label for="user-email-login">Email address</label>
-        <input name="Email" type="email" class="form-control" id="user-email-login" placeholder="Email">
-    </div>
-    <div class="form-group">
-        <label for="user-password-login">Password</label>
-        <input name="Password" type="password" class="form-control" id="user-password-login" placeholder="Password">
-    </div>
-    <button type="submit" class="btn btn-default">Sign in</button>
-</form>
-
-<h2>Or Register</h2>
-
-<form class="form-horizontal" action="@Url.Action("Register")" method="post">
-    <div class="form-group">
-        <label for="user-email-register">Email address</label>
-        <input name="Email" type="email" class="form-control" id="user-email-register" placeholder="Email">
-    </div>
-    <div class="form-group">
-        <label for="user-email-register">Full Name</label>
-        <input name="FullName" class="form-control" id="user-email-register" placeholder="You full name">
-    </div>
-    <div class="form-group">
-        <label for="user-password-register">Password</label>
-        <input name="Password" type="password" class="form-control" id="user-password-register" placeholder="Password">
-    </div>
-    <div class="form-group">
-        <label for="user-password-register-confirm">Confirm password</label>
-        <input name="ConfirmPassword" type="password" class="form-control" id="user-password-register-confirm" placeholder="Password">
-    </div>
-    <button type="submit" class="btn btn-default">Sign up</button>
-</form>
+<div style="padding: 0 30px;">
+    <h2>Login</h2>
+    <form class="form-horizontal" action="@Url.Action("Login")" method="post">
+        <div class="form-group">
+            <label for="user-email-login">Email address</label>
+            <input name="Email" type="email" class="form-control" id="user-email-login" placeholder="Email">
+        </div>
+        <div class="form-group">
+            <label for="user-password-login">Password</label>
+            <input name="Password" type="password" class="form-control" id="user-password-login" placeholder="Password">
+        </div>
+        <button type="submit" class="btn btn-default">Sign in</button>
+    </form>
+    <h2>Or Register</h2>
+    <form class="form-horizontal" action="@Url.Action("Register")" method="post">
+        <div class="form-group">
+            <label for="user-email-register">Email address</label>
+            <input name="Email" type="email" class="form-control" id="user-email-register" placeholder="Email">
+        </div>
+        <div class="form-group">
+            <label for="user-email-register">Full Name</label>
+            <input name="FullName" class="form-control" id="user-email-register" placeholder="You full name">
+        </div>
+        <div class="form-group">
+            <label for="user-password-register">Password</label>
+            <input name="Password" type="password" class="form-control" id="user-password-register" placeholder="Password">
+        </div>
+        <div class="form-group">
+            <label for="user-password-register-confirm">Confirm password</label>
+            <input name="ConfirmPassword" type="password" class="form-control" id="user-password-register-confirm" placeholder="Password">
+        </div>
+        <button type="submit" class="btn btn-default">Sign up</button>
+    </form>
+</div>
