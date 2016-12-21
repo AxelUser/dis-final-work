@@ -40,6 +40,7 @@ namespace TaskManager.ServiceProxy
             using(IModel channel = connection.CreateModel())
             {
                 var props = channel.CreateBasicProperties();
+                props.Headers = new Dictionary<string, object>();
                 props.Headers.Add("task-id", taskId.ToString());
                 
                 channel.QueueDeclare(

@@ -29,6 +29,7 @@ namespace TaskManager.Service.Notification.Handler
 
         public void Start()
         {
+            listener.Start();
             Listening(cts.Token, listener);
         }
 
@@ -36,6 +37,7 @@ namespace TaskManager.Service.Notification.Handler
         {
             cts.Cancel();
             handler.StopSendingTasks();
+            listener.Stop();
         }
 
         private void Listening(CancellationToken ct, TcpListener listener)
@@ -76,7 +78,7 @@ namespace TaskManager.Service.Notification.Handler
                         {
 
                         }
-                        if (readIntTask.IsCompleted)
+                        if (readIntTask.IsCompleted && !readIntTask.IsFaulted)
                         {
                             int taskId = readIntTask.Result;
                             handler.RunSending(taskId);

@@ -16,7 +16,9 @@ namespace TaskManager.ServiceBus.Handler
         private string hostname;
         private int port;
         public ServiceSender(string key, string hostname, int servicePort)
-        {            
+        {
+            this.hostname = hostname;
+            this.port = servicePort;
             this.key = key;
         }
 

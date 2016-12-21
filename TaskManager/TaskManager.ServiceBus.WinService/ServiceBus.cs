@@ -76,7 +76,7 @@ namespace TaskManager.ServiceBus.WinService
                 int parsedPort;
                 if (isConnected &= int.TryParse(port, out parsedPort))
                 {
-                    server.InitNotifyService(key, host, parsedPort);
+                    server.InitReportService(key, host, parsedPort);
                 }
             }
             return isConnected;
