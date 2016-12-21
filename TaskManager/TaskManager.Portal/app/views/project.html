@@ -1,0 +1,93 @@
+﻿<div>
+    <h3>
+        {{formTitle}}
+    </h3>
+    <form name="projectForm" id="projectForm">
+        <fieldset ng-disabled="controllerType == 'view'">
+            <div class="form-group">
+                <label for="title">Название проекта</label>
+                <input type="text" class="form-control" id="title" placeholder="Название проекта"
+                       ng-model="entity.Title">
+            </div>
+            <div class="form-group">
+                <label for="master">Владелец</label>
+                <select class="form-control" id="master" ng-model="entity.User"
+                        ng-options="user.FullName for user in users track by user.Id">
+                </select>
+            </div>
+            <table class="table table-hover">
+                <thead class="bg-info">
+                    <tr>
+                        <td>
+                            <strong>Название задачи</strong>
+                        </td>
+                        <td>
+                            <strong>Количество очков</strong>
+                        </td>
+                        <td>
+                            <strong>Дата создания</strong>
+                        </td>
+                        <td>
+                            <strong>Дата обновления</strong>
+                        </td>
+                        <td>
+                            <strong>Статус</strong>
+                        </td>
+                        <td>
+                            <strong>Исполнители</strong>
+                        </td>
+                        <td style="width: 120px;" ng-if="controllerType != 'view'">
+                            <button type="button" class="btn btn-sm btn-success"
+                                    ng-click="newTask()">
+                                <i class="glyphicon glyphicon-plus" aria-hidden="true"></i>
+                            </button>
+                        </td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="task in entity.Tasks">
+                        <td>{{task.Title}}</td>
+                        <td>{{task.EstimatedDifficult}}</td>
+                        <td>{{task.CreationDate}}</td>
+                        <td>{{task.UpdateDate}}</td>
+                        <td>{{task.TaskStatusType.Caption}}</td>
+                        <td>
+                            <div ng-repeat="executor in task.Executors">
+                                <div>
+                                    <span>{{executor.RoleType.Caption}}: </span>
+                                    <span>{{executor.User.FullName}}</span>
+                                </div>
+                            </div>
+                        </td>
+                        <td class="btn-group btn-group-sm" ng-if="controllerType != 'view'">
+                            <!--<button type="button" class="btn btn-info"
+                                    ng-click="viewTask(project)">
+                                <i class="glyphicon glyphicon-eye-open" aria-hidden="true"></i>
+                            </button>-->
+                            <button type="button" class="btn btn-primary"
+                                    ng-click="editTask(task)">
+                                <i class="glyphicon glyphicon-pencil" aria-hidden="true"></i>
+                            </button>
+                            <button type="button" class="btn btn-danger"
+                                    ng-click="removeTask(task)">
+                                <i class="glyphicon glyphicon-remove" aria-hidden="true"></i>
+                            </button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </fieldset>
+        <div style="height: 50px;">
+            <div class="pull-right">
+                <button type="button" class="btn btn-success pull-left"
+                        style="margin-right: 15px"
+                        ng-click="saveEntity()">
+                    <i class="glyphicon glyphicon-ok"></i>
+                </button>
+                <button class="btn btn-danger pull-right" ng-click="closeThisDialog()">
+                    <i class="glyphicon glyphicon-remove"></i>
+                </button>
+            </div>
+        </div>
+    </form>
+</div>

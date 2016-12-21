@@ -1,0 +1,56 @@
+﻿<table class="table table-hover">
+    <thead class="bg-info">
+        <tr>
+            <td>
+                <strong>Название задачи</strong>
+            </td>
+            <td>
+                <strong>Количество очков</strong>
+            </td>
+            <td>
+                <strong>Дата создания</strong>
+            </td>
+            <td>
+                <strong>Дата обновления</strong>
+            </td>
+            <td>
+                <strong>Статус</strong>
+            </td>
+            <td>
+                <strong>Исполнители</strong>
+            </td>
+            <td style="width: 120px;" ng-if="controllerType != 'view'"></td>
+        </tr>
+    </thead>
+    <tbody>
+        <tr ng-repeat="task in tasks">
+            <td>{{task.Title}}</td>
+            <td>{{task.EstimatedDifficult}}</td>
+            <td>{{task.CreationDate}}</td>
+            <td>{{task.UpdateDate}}</td>
+            <td>{{task.TaskStatusType.Caption}}</td>
+            <td>
+                <div ng-repeat="executor in task.Executors">
+                    <div>
+                        <span>{{executor.RoleType.Caption}}: </span>
+                        <span>{{executor.User.FullName}}</span>
+                    </div>
+                </div>
+            </td>
+            <td class="btn-group btn-group-sm" ng-if="controllerType != 'view'">
+                <!--<button type="button" class="btn btn-info"
+                        ng-click="viewProject(project)">
+                    <i class="glyphicon glyphicon-eye-open" aria-hidden="true"></i>
+                </button>-->
+                <button type="button" class="btn btn-primary"
+                        ng-click="editProject(project)">
+                    <i class="glyphicon glyphicon-pencil" aria-hidden="true"></i>
+                </button>
+                <button type="button" class="btn btn-danger"
+                        ng-click="removeProject(project)">
+                    <i class="glyphicon glyphicon-remove" aria-hidden="true"></i>
+                </button>
+            </td>
+        </tr>
+    </tbody>
+</table>
