@@ -18,6 +18,9 @@ namespace TaskManager.DAL.Entities
         public DateTime CreationDate { get; set; }
         [Required]
         public DateTime UpdateDate { get; set; }
+        public int ProjectId { get; set; }
+        [Required]
+        public virtual Project Project { get; set; }
         public int? TaskStatusTypeId { get; set; }
         public virtual TaskStatusType TaskStatusType { get; set; }
         public virtual IEnumerable<ExecutorRole> ExecutorRoles { get; set; }

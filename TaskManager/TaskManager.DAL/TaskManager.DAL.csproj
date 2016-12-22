@@ -60,9 +60,9 @@
     <Compile Include="Entities\TaskManagerContext.cs" />
     <Compile Include="Entities\User.cs" />
     <Compile Include="Entities\UserGroup.cs" />
-    <Compile Include="Migrations\201612220017523_InitDatabase.cs" />
-    <Compile Include="Migrations\201612220017523_InitDatabase.Designer.cs">
-      <DependentUpon>201612220017523_InitDatabase.cs</DependentUpon>
+    <Compile Include="Migrations\201612220110199_InitDatabase.cs" />
+    <Compile Include="Migrations\201612220110199_InitDatabase.Designer.cs">
+      <DependentUpon>201612220110199_InitDatabase.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -72,8 +72,8 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201612220017523_InitDatabase.resx">
-      <DependentUpon>201612220017523_InitDatabase.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201612220110199_InitDatabase.resx">
+      <DependentUpon>201612220110199_InitDatabase.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

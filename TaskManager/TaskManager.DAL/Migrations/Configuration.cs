@@ -28,7 +28,7 @@
             //    );
             //
             var roles = new UserGroup[]
-{
+            {
                 new UserGroup()
                 {
                     Id = 10,
@@ -41,7 +41,7 @@
                     Name = "User",
                     Caption = "User"
                 }
-};
+            };
             var types = new ExecutorRoleType[]
             {
                 new ExecutorRoleType()

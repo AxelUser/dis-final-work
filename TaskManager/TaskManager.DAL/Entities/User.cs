@@ -16,7 +16,11 @@ namespace TaskManager.DAL.Entities
         public string FullName { get; set; }
         [Required]
         public string Email { get; set; }
-        public virtual int UserGroupId { get; set; }
+        public int UserGroupId { get; set; }
+        public virtual IEnumerable<Project> Projects { get; set; }
+        public virtual IEnumerable<ExecutorRole> ExecutorRoles { get; set; }
+        [Required]
         public virtual UserGroup UserGroup { get; set; }
+
     }
 }

@@ -21,8 +21,8 @@ namespace TaskManager.Portal.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            var project = db.Projects.Include(p => p.ProjectTasks).Where(p => p.Id == id).Single();
-            return Json(project.ProjectTasks.ToList(), JsonRequestBehavior.AllowGet);
+            var projectTasks = db.ProjectTasks.Where(t => t.ProjectId == id).ToList();
+            return Json(projectTasks, JsonRequestBehavior.AllowGet);
         }
 
         // GET: ProjectTasks/Details/5
