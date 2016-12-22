@@ -46,19 +46,27 @@ namespace TaskManager.Portal.Controllers
         [HttpPost]
         public ActionResult Create(ProjectTask projectTask)
         {
+            //projectTask.CreationDate = DateTime.Now;
+            //projectTask.UpdateDate = DateTime.Now;
             if (ModelState.IsValid)
             {
-                var type = projectTask.TaskStatusType;
-                if (type != null)
-                {
-                    projectTask.TaskStatusTypeId = projectTask.TaskStatusType != null ? projectTask.TaskStatusType.Id : projectTask.TaskStatusTypeId;
-                    projectTask.TaskStatusType = null;
-                }
-                projectTask.CreationDate = DateTime.Now;
-                projectTask.UpdateDate = DateTime.Now;
                 db.ProjectTasks.Add(projectTask);
+                foreach (var i in projectTask.ExecutorRoles)
+                {
+                    try
+                    {
+                        db.Entry(i).State = EntityState.Modified;
+                    }
+                    catch (InvalidOperationException e)
+                    {
+                        try
+                        {
+                            db.Entry(i).State = EntityState.Added;
+                        }
+                        catch { }
+                    }
+                }
                 db.SaveChanges();
-                projectTask.TaskStatusType = type;
                 return Json(projectTask, JsonRequestBehavior.AllowGet);
             }
             return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -73,7 +81,23 @@ namespace TaskManager.Portal.Controllers
             if (ModelState.IsValid)
             {
                 db.Entry(projectTask).State = EntityState.Modified;
+                foreach (var i in projectTask.ExecutorRoles)
+                {
+                    try
+                    {
+                        db.Entry(i).State = EntityState.Modified;
+                    }
+                    catch (InvalidOperationException e)
+                    {
+                        try
+                        {
+                            db.Entry(i).State = EntityState.Added;
+                        }
+                        catch { }
+                    }
+                }
                 db.SaveChanges();
+
                 return Json(projectTask, JsonRequestBehavior.AllowGet);
             }
             return new HttpStatusCodeResult(HttpStatusCode.BadRequest);

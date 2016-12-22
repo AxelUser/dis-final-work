@@ -7,7 +7,7 @@
 
     function StatusService($http, $routeParams, $rootScope, $q) {
         this.getStatuses = function (id) {
-            return $http.get('/TaskStatusTypes/List');
+            return $http.get('/TaskStatusTypes/Index');
         };
     };
 })();

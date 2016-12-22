@@ -15,9 +15,7 @@ namespace TaskManager.DAL.Entities
         public int ExecutorRoleTypeId { get; set; }
         public int ProjectTaskId { get; set; }
         public virtual User User { get; set; }
-        [Required]
         public virtual ExecutorRoleType ExecutorRoleType { get; set; }
-        [Required]
         public virtual ProjectTask ProjectTasks { get; set; }
     }
 }

@@ -15,9 +15,13 @@ namespace TaskManager.Portal.Controllers
         private TaskManagerContext db = new TaskManagerContext();
 
         // GET: ExecutorRoles
-        public ActionResult Index()
+        public ActionResult Index(int? id)
         {
-            var executorRoles = db.ExecutorRoles.Include(e => e.ExecutorRoleType).Include(e => e.ProjectTasks).Include(e => e.User);
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            var executorRoles = db.ExecutorRoles.Include(e => e.ExecutorRoleType).Include(e => e.User).Where(e=>e.ProjectTaskId == id);
             return Json(executorRoles.ToList(), JsonRequestBehavior.AllowGet);
         }
 

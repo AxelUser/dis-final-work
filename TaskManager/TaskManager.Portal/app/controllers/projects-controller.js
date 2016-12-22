@@ -5,7 +5,7 @@
         .module('app')
         .controller('ProjectsController', ProjectsController);
 
-    function ProjectsController($scope, ngDialog, ProjectService) {
+    function ProjectsController($scope, ngDialog, ProjectService, ExceptionService) {
         (function init() {
             ProjectService.getProjects().then(
                 function (response) {
@@ -13,7 +13,7 @@
                     $scope.projects = data;
                 },
                 function (error) {
-
+                    ExceptionService.alert();
                 });
         })();
 
@@ -75,14 +75,14 @@
                 .then(function (response) {
                     var index = -1;
                     $scope.projects.forEach(function (item, i) {
-                        if (item.Id == data.value.Id) {
+                        if (item.Id == project.Id) {
                             index = i;
                         }
                     });
                     $scope.projects.splice(index, 1);
                 },
                 function (error) {
-
+                    ExceptionService.alert();
                 });
         };
     };

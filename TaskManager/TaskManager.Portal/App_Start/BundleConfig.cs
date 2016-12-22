@@ -37,6 +37,7 @@ namespace TaskManager.Portal
                 "~/app/services/task-service.js",
                 "~/app/services/status-service.js",
                 "~/app/services/role-service.js",
+                "~/app/services/exception-service.js",
                 "~/app/services/user-service.js"
                 ));
 

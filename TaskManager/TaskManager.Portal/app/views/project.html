@@ -14,7 +14,7 @@
                 <select class="form-control" id="master" ng-model="entity.User"
                         ng-options="user.FullName for user in users track by user.Id"></select>
             </div>
-            <table class="table table-hover">
+            <table class="table table-hover" ng-if="controllerType != 'new'">
                 <thead class="bg-info">
                     <tr>
                         <td>
@@ -32,9 +32,6 @@
                         <td>
                             <strong>Статус</strong>
                         </td>
-                        <td>
-                            <strong>Исполнители</strong>
-                        </td>
                         <td style="width: 120px;" ng-if="controllerType != 'view'">
                             <button type="button" class="btn btn-sm btn-success"
                                     ng-click="newTask()">
@@ -44,20 +41,12 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr ng-repeat="task in entity.Tasks">
+                    <tr ng-repeat="task in entity.ProjectTasks">
                         <td>{{task.Title}}</td>
                         <td>{{task.EstimatedDifficult}}</td>
-                        <td>{{task.CreationDate}}</td>
-                        <td>{{task.UpdateDate}}</td>
+                        <td>{{task.CreationDateView}}</td>
+                        <td>{{task.UpdateDateView}}</td>
                         <td>{{task.TaskStatusType.Caption}}</td>
-                        <td>
-                            <div ng-repeat="executor in task.ExecutorRoles">
-                                <div>
-                                    <span>{{executor.RoleType.Caption}}: </span>
-                                    <span>{{executor.User.FullName}}</span>
-                                </div>
-                            </div>
-                        </td>
                         <td class="btn-group btn-group-sm" ng-if="controllerType != 'view'">
                             <!--<button type="button" class="btn btn-info"
                                     ng-click="viewTask(project)">
