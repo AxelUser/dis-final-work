@@ -49,7 +49,7 @@
 
             newDialog.closePromise.then(function (data) {
                 if (data.value) {
-                    $scope.entityTask.Executors.push(data.value);
+                    $scope.entityTask.ExecutorRoles.push(data.value);
                 }
             });
         };
@@ -68,12 +68,12 @@
             editDialog.closePromise.then(function (data) {
                 if (data.value && data.value.Id) {
                     var index = -1;
-                    $scope.entityTask.Executors.forEach(function (item, i) {
+                    $scope.entityTask.ExecutorRoles.forEach(function (item, i) {
                         if (item.Id == data.value.Id) {
                             index = i;
                         }
                     });
-                    $scope.entityTask.Executors[index] = data.value;
+                    $scope.entityTask.ExecutorRoles[index] = data.value;
                 }
             });
         };

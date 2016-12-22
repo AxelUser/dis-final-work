@@ -19,7 +19,7 @@
             //                Id:1,
             //                Caption: 'Status 1'
             //            },
-            //            Executors: [{
+            //            ExecutorRoles: [{
             //                Id: 1,
             //                RoleType: {
             //                    Id: 1,
@@ -52,7 +52,7 @@
             //                Id: 2,
             //                Caption: 'Status 1'
             //            },
-            //            Executors: [{
+            //            ExecutorRoles: [{
             //                Id: 1,
             //                RoleType: {
             //                    Id: 2,
@@ -74,7 +74,7 @@
             //                Id: 3,
             //                Caption: 'Status 1'
             //            },
-            //            Executors: [{
+            //            ExecutorRoles: [{
             //                Id: 1,
             //                RoleType: {
             //                    Id: 3,

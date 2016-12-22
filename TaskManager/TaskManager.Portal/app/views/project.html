@@ -51,7 +51,7 @@
                         <td>{{task.UpdateDate}}</td>
                         <td>{{task.TaskStatusType.Caption}}</td>
                         <td>
-                            <div ng-repeat="executor in task.Executors">
+                            <div ng-repeat="executor in task.ExecutorRoles">
                                 <div>
                                     <span>{{executor.RoleType.Caption}}: </span>
                                     <span>{{executor.User.FullName}}</span>

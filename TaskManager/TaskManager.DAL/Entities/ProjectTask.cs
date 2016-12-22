@@ -20,6 +20,6 @@ namespace TaskManager.DAL.Entities
         public DateTime UpdateDate { get; set; }
         public int? TaskStatusTypeId { get; set; }
         public virtual TaskStatusType TaskStatusType { get; set; }
-        public virtual IEnumerable<ExecutorRole> Executors { get; set; }
+        public virtual IEnumerable<ExecutorRole> ExecutorRoles { get; set; }
     }
 }
