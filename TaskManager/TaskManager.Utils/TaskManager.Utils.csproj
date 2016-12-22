@@ -51,7 +51,8 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Reports\CellStyle.cs" />
     <Compile Include="Reports\CustomColumn.cs" />
-    <Compile Include="Reports\Reporter.cs" />
+    <Compile Include="Reports\CustomReport.cs" />
+    <Compile Include="Reports\ExcelReporterFactory.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
