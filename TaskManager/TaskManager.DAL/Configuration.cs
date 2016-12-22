@@ -1,4 +1,4 @@
-п»їnamespace TaskManager.DAL.Migrations
+namespace TaskManager.DAL.Migrations
 {
     using Entities;
     using System;
@@ -28,7 +28,7 @@
             //    );
             //
             var roles = new UserGroup[]
-{
+            {
                 new UserGroup()
                 {
                     Id = 10,
@@ -41,20 +41,20 @@
                     Name = "User",
                     Caption = "User"
                 }
-};
+            };
             var types = new ExecutorRoleType[]
             {
                 new ExecutorRoleType()
                 {
                     Id = 1,
                     Name = "dev",
-                    Caption = "Р Р°Р·СЂР°Р±РѕС‚С‡РёРє"
+                    Caption = "Разработчик"
                 },
                 new ExecutorRoleType()
                 {
                     Id = 2,
                     Name = "tester",
-                    Caption = "РЎРїРµС†РёР°Р»РёСЃС‚ РїРѕ С‚РµСЃС‚РёСЂРѕРІР°РЅРёСЋ",
+                    Caption = "Специалист по тестированию",
                 }
             };
             var statuses = new TaskStatusType[]
@@ -62,17 +62,17 @@
                 new TaskStatusType()
                 {
                     Id = 1,
-                    Caption = "РћС‚Р»РѕР¶РµРЅРѕ"
+                    Caption = "Отложен"
                 },
                 new TaskStatusType()
                 {
                     Id = 2,
-                    Caption = "Р’ РїСЂРѕС†РµСЃСЃРµ"
+                    Caption = "В работе"
                 },
                 new TaskStatusType()
                 {
                     Id = 3,
-                    Caption = "Р“РѕС‚РѕРІРѕ"
+                    Caption = "Готово"
                 }
             };
             context.UserGroups.AddOrUpdate(roles);

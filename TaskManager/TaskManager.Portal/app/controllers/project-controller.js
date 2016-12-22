@@ -18,25 +18,34 @@
 
             UserService.getUsers()
                 .then(function (response) {
-                    var data = response;
+                    var data = response.data;
                     $scope.users = data;
                 },
                 function (error) {
 
                 });
-            TaskService.getTasks($scope.entity.id).then(
-               function (response) {
-                   var data = response;
-                   $scope.entity.Tasks = data;
-               },
-               function (error) {
+            if ($scope.entity.Id) {
+                TaskService.getTasks($scope.entity.Id).then(
+                   function (response) {
+                       var data = response.data;
+                       $scope.entity.Tasks = data;
+                   },
+                   function (error) {
 
-               });
+                   });
+            } else {
+                $scope.entity.Tasks = [];
+            }
         })();
 
         $scope.saveEntity = function () {
-            //ProjectService.saveProject($scope.entity);
-            $scope.closeThisDialog($scope.entity);
+            ProjectService.saveProject($scope.entity)
+                .then(function (response) {
+                    $scope.closeThisDialog(response.data);
+                },
+                function (error) {
+
+                });
         };
 
         $scope.newTask = function () {
@@ -78,6 +87,32 @@
                     $scope.entity.Tasks[index] = data.value;
                 }
             });
+        };
+
+        $scope.doExport = function () {
+            ProjectService.doExport($scope.entity.Id)
+                .then(function (response) {
+
+                },
+                function (error) {
+
+                });
+        }
+
+        $scope.removeProject = function (task) {
+            TaskService.removeTask(task.Id)
+                .then(function (response) {
+                    var index = -1;
+                    $scope.entity.Tasks.forEach(function (item, i) {
+                        if (item.Id == data.value.Id) {
+                            index = i;
+                        }
+                    });
+                    $scope.entity.Tasks.splice(index, 1);
+                },
+                function (error) {
+
+                });
         };
     };
 })();

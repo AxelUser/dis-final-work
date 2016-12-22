@@ -73,7 +73,7 @@ namespace TaskManager.Service.Notification.Handler
             using(TaskManagerContext db = new TaskManagerContext())
             {
                 var emails = db.ExecutorRoles.Include(r=>r.User)
-                        .Where(r => r.TaskId == taskId)
+                        .Where(r => r.ProjectTaskId == taskId)
                         .Select(r => r.User.Email)
                         .ToList();
                 return emails;

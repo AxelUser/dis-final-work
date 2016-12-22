@@ -18,7 +18,7 @@
 
             StatusService.getStatuses()
                 .then(function (response) {
-                    var data = response;
+                    var data = response.data;
                     $scope.statuses = data;
                 },
                 function (error) {
@@ -28,9 +28,13 @@
         })();
 
         $scope.saveTask = function () {
-            //ProjectService.saveProject($scope.entityTask);
-            $scope.entityTask.Id = Math.floor(Math.random() * 10000);
-            $scope.closeThisDialog($scope.entityTask);
+            TaskService.saveTask($scope.entityTask).then(
+                function (response) {
+                    $scope.closeThisDialog(response.data);
+                },
+                function (error) {
+
+                });
         };
 
         $scope.newExecutor = function () {
@@ -45,7 +49,7 @@
 
             newDialog.closePromise.then(function (data) {
                 if (data.value) {
-                    $scope.entityTask.Executors.push(data.value);
+                    $scope.entityTask.ExecutorRoles.push(data.value);
                 }
             });
         };
@@ -64,12 +68,12 @@
             editDialog.closePromise.then(function (data) {
                 if (data.value && data.value.Id) {
                     var index = -1;
-                    $scope.entityTask.Executors.forEach(function (item, i) {
+                    $scope.entityTask.ExecutorRoles.forEach(function (item, i) {
                         if (item.Id == data.value.Id) {
                             index = i;
                         }
                     });
-                    $scope.entityTask.Executors[index] = data.value;
+                    $scope.entityTask.ExecutorRoles[index] = data.value;
                 }
             });
         };

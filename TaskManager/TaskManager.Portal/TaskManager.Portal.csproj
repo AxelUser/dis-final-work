@@ -203,6 +203,7 @@
     <Content Include="app\node_modules\ng-dialog\tests\unit\ngDialog_close.js" />
     <Content Include="app\node_modules\ng-dialog\tests\unit\ngDialog_closeThisDialog.js" />
     <Content Include="app\node_modules\ng-dialog\tests\unit\ngDialog_insideDirective.js" />
+    <Content Include="app\services\exception-service.js" />
     <Content Include="app\services\role-service.js" />
     <Content Include="app\services\status-service.js" />
     <Content Include="app\services\user-service.js" />
@@ -1043,7 +1044,9 @@
     </Content>
     <Content Include="Content\Site.css" />
     <Content Include="Scripts\_references.js" />
-    <Content Include="Views\Web.config" />
+    <Content Include="Views\Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />

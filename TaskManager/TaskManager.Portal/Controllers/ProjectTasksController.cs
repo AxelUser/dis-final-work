@@ -15,10 +15,14 @@ namespace TaskManager.Portal.Controllers
         private TaskManagerContext db = new TaskManagerContext();
 
         // GET: ProjectTasks
-        public ActionResult Index()
+        public ActionResult Index(int? id)
         {
-            var projectTasks = db.ProjectTasks.Include(p => p.TaskStatusType);
-            return View(projectTasks.ToList());
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            var project = db.Projects.Include(p => p.ProjectTasks).Where(p => p.Id == id).Single();
+            return Json(project.ProjectTasks.ToList(), JsonRequestBehavior.AllowGet);
         }
 
         // GET: ProjectTasks/Details/5
@@ -33,91 +37,53 @@ namespace TaskManager.Portal.Controllers
             {
                 return HttpNotFound();
             }
-            return View(projectTask);
-        }
-
-        // GET: ProjectTasks/Create
-        public ActionResult Create()
-        {
-            ViewBag.TaskStatusTypeId = new SelectList(db.TaskStatusTypes, "Id", "Caption");
-            return View();
+            return Json(projectTask, JsonRequestBehavior.AllowGet);
         }
 
         // POST: ProjectTasks/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Title,EstimatedDifficult,CreationDate,UpdateDate,TaskStatusTypeId")] ProjectTask projectTask)
+        public ActionResult Create(ProjectTask projectTask)
         {
             if (ModelState.IsValid)
             {
+                var type = projectTask.TaskStatusType;
+                projectTask.TaskStatusTypeId = projectTask.TaskStatusType.Id;
+                projectTask.TaskStatusType = null;
+                projectTask.CreationDate = DateTime.Now;
+                projectTask.UpdateDate = DateTime.Now;
                 db.ProjectTasks.Add(projectTask);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                projectTask.TaskStatusType = type;
+                return Json(projectTask, JsonRequestBehavior.AllowGet);
             }
-
-            ViewBag.TaskStatusTypeId = new SelectList(db.TaskStatusTypes, "Id", "Caption", projectTask.TaskStatusTypeId);
-            return View(projectTask);
-        }
-
-        // GET: ProjectTasks/Edit/5
-        public ActionResult Edit(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            ProjectTask projectTask = db.ProjectTasks.Find(id);
-            if (projectTask == null)
-            {
-                return HttpNotFound();
-            }
-            ViewBag.TaskStatusTypeId = new SelectList(db.TaskStatusTypes, "Id", "Caption", projectTask.TaskStatusTypeId);
-            return View(projectTask);
+            return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
         }
 
         // POST: ProjectTasks/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Title,EstimatedDifficult,CreationDate,UpdateDate,TaskStatusTypeId")] ProjectTask projectTask)
+        public ActionResult Edit(ProjectTask projectTask)
         {
             if (ModelState.IsValid)
             {
                 db.Entry(projectTask).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return Json(projectTask, JsonRequestBehavior.AllowGet);
             }
-            ViewBag.TaskStatusTypeId = new SelectList(db.TaskStatusTypes, "Id", "Caption", projectTask.TaskStatusTypeId);
-            return View(projectTask);
-        }
-
-        // GET: ProjectTasks/Delete/5
-        public ActionResult Delete(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            ProjectTask projectTask = db.ProjectTasks.Find(id);
-            if (projectTask == null)
-            {
-                return HttpNotFound();
-            }
-            return View(projectTask);
+            return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
         }
 
         // POST: ProjectTasks/Delete/5
         [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
             ProjectTask projectTask = db.ProjectTasks.Find(id);
             db.ProjectTasks.Remove(projectTask);
             db.SaveChanges();
-            return RedirectToAction("Index");
+            return new HttpStatusCodeResult(HttpStatusCode.OK);
         }
 
         protected override void Dispose(bool disposing)

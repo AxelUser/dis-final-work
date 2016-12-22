@@ -13,6 +13,6 @@ namespace TaskManager.DAL.Entities
         public int Id { get; set; }
         [Required]
         public string Caption { get; set; }
-        public virtual IEnumerable<Task> Tasks { get; set; }
+        public virtual IEnumerable<ProjectTask> ProjectTasks { get; set; }
     }
 }
