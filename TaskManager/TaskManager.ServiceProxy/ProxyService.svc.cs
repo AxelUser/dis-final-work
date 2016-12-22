@@ -61,7 +61,8 @@ namespace TaskManager.ServiceProxy
             using (IModel channel = connection.CreateModel())
             {
                 var props = channel.CreateBasicProperties();
-                props.Headers.Add("project-id", projectId.ToString());
+                props.Headers = new Dictionary<string, object>();
+                props.Headers.Add("project-id", projectId);                
                 channel.QueueDeclare(
                     queue: qReport,
                     durable: false,
@@ -69,12 +70,10 @@ namespace TaskManager.ServiceProxy
                     autoDelete: false,
                     arguments: null);
 
-                byte[] body = BitConverter.GetBytes(projectId);
                 channel.BasicPublish(
                     exchange: "",
                     routingKey: qReport,
-                    basicProperties: null,
-                    body: body);
+                    basicProperties: props);
             }
         }
     }

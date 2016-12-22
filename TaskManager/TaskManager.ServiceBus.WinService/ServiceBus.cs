@@ -84,6 +84,7 @@ namespace TaskManager.ServiceBus.WinService
 
         public void TestSerivce()
         {
+            Console.WriteLine(nameof(ServiceBusServer));
             OnStart(null);
             Console.ReadKey();
             OnStop();

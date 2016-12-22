@@ -42,6 +42,7 @@ namespace TaskManager.Service.Report.WinService
 
         public void TestService()
         {
+            Console.WriteLine(nameof(ReportService));
             OnStart(null);
             Console.ReadKey();
             OnStop();

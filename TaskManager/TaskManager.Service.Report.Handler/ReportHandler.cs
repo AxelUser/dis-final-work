@@ -34,12 +34,13 @@ namespace TaskManager.Service.Notification.Handler
                 using (TaskManagerContext db = new TaskManagerContext())
                 {
                     var project = db.Projects
-                        .Include(p=>p.ProjectTasks)
                         .SingleOrDefault(p=>p.Id==projectId);
+                    var tasks = db.ProjectTasks
+                        .Where(t => t.ProjectId == projectId).ToList();
                     title = project?.Title;
-                    if(project?.ProjectTasks != null)
+                    if(tasks != null)
                     {
-                        models = project.ProjectTasks.Select(t => t.ToReportViewModel()).ToList();
+                        models = tasks.Select(t => t.ToReportViewModel()).ToList();
                     }
                 }
                 if (!string.IsNullOrEmpty(title))

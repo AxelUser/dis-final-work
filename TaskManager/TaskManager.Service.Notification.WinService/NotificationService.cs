@@ -42,6 +42,7 @@ namespace TaskManager.Service.Notification.WinService
 
         public void TestService()
         {
+            Console.WriteLine(nameof(NotificationService));
             OnStart(null);
             Console.ReadKey();
             OnStop();
