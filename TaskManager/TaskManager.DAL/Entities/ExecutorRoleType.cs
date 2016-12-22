@@ -15,6 +15,6 @@ namespace TaskManager.DAL.Entities
         public string Name { get; set; }
         [Required]
         public string Caption { get; set; }
-        public virtual ICollection<ExecutorRole> ExecutorRoles { get; set; }
+        public virtual IEnumerable<ExecutorRole> ExecutorRoles { get; set; }
     }
 }
