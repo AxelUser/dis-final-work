@@ -7,6 +7,10 @@
 
     function RoleService($http, $routeParams, $rootScope, $q) {
         this.getRoles = function () {
+            return $http.get('/ExecutorRoles/Types/');
+        };
+
+        this.getExecutors = function () {
             return $http.get('/ExecutorRoles/Index/');
         };
     };

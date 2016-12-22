@@ -49,8 +49,11 @@ namespace TaskManager.Portal.Controllers
             if (ModelState.IsValid)
             {
                 var type = projectTask.TaskStatusType;
-                projectTask.TaskStatusTypeId = projectTask.TaskStatusType.Id;
-                projectTask.TaskStatusType = null;
+                if (type != null)
+                {
+                    projectTask.TaskStatusTypeId = projectTask.TaskStatusType != null ? projectTask.TaskStatusType.Id : projectTask.TaskStatusTypeId;
+                    projectTask.TaskStatusType = null;
+                }
                 projectTask.CreationDate = DateTime.Now;
                 projectTask.UpdateDate = DateTime.Now;
                 db.ProjectTasks.Add(projectTask);

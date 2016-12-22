@@ -21,6 +21,12 @@ namespace TaskManager.Portal.Controllers
             return Json(executorRoles.ToList(), JsonRequestBehavior.AllowGet);
         }
 
+        public ActionResult Types()
+        {
+            var executorRoleTypes = db.ExecutorRoleTypes;
+            return Json(executorRoleTypes.ToList(), JsonRequestBehavior.AllowGet);
+        }
+
         //// GET: ExecutorRoles/Details/5
         //public ActionResult Details(int? id)
         //{

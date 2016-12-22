@@ -24,7 +24,6 @@
                 function (error) {
 
                 });
-
         })();
 
         $scope.saveTask = function () {
@@ -48,7 +47,7 @@
             });
 
             newDialog.closePromise.then(function (data) {
-                if (data.value) {
+                if (data.value && data.value.Id) {
                     $scope.entityTask.ExecutorRoles.push(data.value);
                 }
             });

@@ -28,13 +28,13 @@
                 TaskService.getTasks($scope.entity.Id).then(
                    function (response) {
                        var data = response.data;
-                       $scope.entity.Tasks = data;
+                       $scope.entity.ProjectTasks = data;
                    },
                    function (error) {
 
                    });
             } else {
-                $scope.entity.Tasks = [];
+                $scope.entity.ProjectTasks = [];
             }
         })();
 
@@ -59,8 +59,8 @@
             });
 
             newDialog.closePromise.then(function (data) {
-                if (data.value) {
-                    $scope.entity.Tasks.push(data.value);
+                if (data.value && data.value.Id) {
+                    $scope.entity.ProjectTasks.push(data.value);
                 }
             });
         };
@@ -79,12 +79,12 @@
             editDialog.closePromise.then(function (data) {
                 if (data.value && data.value.Id) {
                     var index = -1;
-                    $scope.entity.Tasks.forEach(function (item, i) {
+                    $scope.entity.ProjectTasks.forEach(function (item, i) {
                         if (item.Id == data.value.Id) {
                             index = i;
                         }
                     });
-                    $scope.entity.Tasks[index] = data.value;
+                    $scope.entity.ProjectTasks[index] = data.value;
                 }
             });
         };
@@ -103,12 +103,12 @@
             TaskService.removeTask(task.Id)
                 .then(function (response) {
                     var index = -1;
-                    $scope.entity.Tasks.forEach(function (item, i) {
+                    $scope.entity.ProjectTasks.forEach(function (item, i) {
                         if (item.Id == data.value.Id) {
                             index = i;
                         }
                     });
-                    $scope.entity.Tasks.splice(index, 1);
+                    $scope.entity.ProjectTasks.splice(index, 1);
                 },
                 function (error) {
 

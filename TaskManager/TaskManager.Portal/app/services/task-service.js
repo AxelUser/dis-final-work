@@ -96,7 +96,11 @@
         };
 
         this.saveTask = function (data) {
-            return $http.post('/ProjectTasks/Create/', data);
+            if (data.Id) {
+                return $http.post('/ProjectTasks/Edit/', data);
+            } else {
+                return $http.post('/ProjectTasks/Create/', data);
+            }
         };
 
         this.removeTask = function (id) {
