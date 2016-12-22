@@ -40,7 +40,8 @@ namespace TaskManager.ServiceProxy
             using(IModel channel = connection.CreateModel())
             {
                 var props = channel.CreateBasicProperties();
-                props.Headers.Add("task-id", taskId.ToString());
+                props.Headers = new Dictionary<string, object>();
+                props.Headers.Add("task-id", taskId);
                 
                 channel.QueueDeclare(
                     queue: qNotify,
@@ -48,8 +49,6 @@ namespace TaskManager.ServiceProxy
                     exclusive: false,
                     autoDelete: false,
                     arguments: null);
-
-                byte[] body = BitConverter.GetBytes(taskId);
                 channel.BasicPublish(
                     exchange: "",
                     routingKey: qNotify,

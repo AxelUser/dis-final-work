@@ -13,11 +13,13 @@ namespace TaskManager.Service.Notification.Handler
     {
         List<Task> handlerTasks;
         EmailSender emailSender;
+        bool stopped;       
 
         public NotificationHandler(EmailSender emailSender)
         {
             this.emailSender = emailSender;
             handlerTasks = new List<Task>();
+            stopped = false;
         }
 
         public void RunSending(int taskId)
@@ -42,7 +44,15 @@ namespace TaskManager.Service.Notification.Handler
                     handlerTasks.Remove(t);
                 }
             });
-            newTask.Start();
+            if (!stopped)
+            {
+                newTask.Start();
+            }            
+        }
+
+        public void StopSendingTasks()
+        {
+            Task.WaitAll(handlerTasks.ToArray());
         }
 
         private void SendEmails(string taskTitle, List<string> adresses)

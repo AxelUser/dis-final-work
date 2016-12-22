@@ -16,7 +16,9 @@ namespace TaskManager.ServiceBus.Handler
         private string hostname;
         private int port;
         public ServiceSender(string key, string hostname, int servicePort)
-        {            
+        {
+            this.hostname = hostname;
+            this.port = servicePort;
             this.key = key;
         }
 
@@ -33,10 +35,7 @@ namespace TaskManager.ServiceBus.Handler
                             int id = int.Parse(headers[key].ToString());
                             writer.Write(id);
                         }
-                        using(BinaryReader reader = new BinaryReader(stream, Encoding.UTF8, true))
-                        {
-                            return reader.ReadBoolean();
-                        }
+                        return true;
                     }
                     catch
                     {

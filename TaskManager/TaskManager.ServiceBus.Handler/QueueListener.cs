@@ -17,6 +17,14 @@ namespace TaskManager.ServiceBus.Handler
         public QueueListener(IConnection connection, string queueName, ServiceSender sender)
         {
             model = connection.CreateModel();
+            model.QueueDeclare(
+                queue: queueName,
+                durable: false,
+                exclusive: false,
+                autoDelete: false,
+                arguments: null);
+
+
             mqConsumer = new EventingBasicConsumer(model);
             mqConsumer.Received += (s, ea) =>
             {

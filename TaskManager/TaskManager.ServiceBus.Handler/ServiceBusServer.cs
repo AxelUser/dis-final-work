@@ -41,7 +41,7 @@ namespace TaskManager.ServiceBus.Handler
 
         public void InitReportService(string dictKey, string hostname, int port)
         {
-            listenerNotify = CreateListener(connection, qReport, dictKey, hostname, port);
+            listenerReport = CreateListener(connection, qReport, dictKey, hostname, port);
         }
 
         public void Start()
