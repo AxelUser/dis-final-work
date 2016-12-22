@@ -47,13 +47,13 @@ namespace TaskManager.ServiceBus.Handler
         public void Start()
         {
             listenerNotify?.Start();
-            //listenerReport?.Start();
+            listenerReport?.Start();
         }
 
         public void Stop()
         {
             listenerNotify?.Stop();
-            //listenerReport?.Stop();
+            listenerReport?.Stop();
         }
 
         private QueueListener CreateListener(IConnection connetction, string queueName, string dictKey, string serviceHost, int servicePort)
