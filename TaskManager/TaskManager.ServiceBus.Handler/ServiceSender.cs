@@ -40,7 +40,7 @@ namespace TaskManager.ServiceBus.Handler
                     catch
                     {
                         return false;
-                    }                        
+                    }
                 }
             }
         }

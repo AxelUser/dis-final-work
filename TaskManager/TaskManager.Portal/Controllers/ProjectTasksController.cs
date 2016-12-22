@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using TaskManager.DAL.Entities;
+using TaskManager.Portal.ServiceReferenceProxy;
 
 namespace TaskManager.Portal.Controllers
 {
@@ -67,7 +68,8 @@ namespace TaskManager.Portal.Controllers
             {
                 db.Entry(projectTask).State = EntityState.Modified;
                 db.SaveChanges();
-
+                ProxyServiceClient client = new ProxyServiceClient();
+                client.NotifyAsync(projectTask.Id);
                 return Json(projectTask, JsonRequestBehavior.AllowGet);
             }
             return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
