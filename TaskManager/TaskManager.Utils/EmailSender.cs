@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Net.Mail;
+using System.Net.Mime;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -23,7 +25,7 @@ namespace TaskManager.Utils
             this.nameFrom = nameFrom;
         }
 
-        public bool SendAsync(string mailTo, string title, string htmlBody)
+        public bool Send(string mailTo, string title, string htmlBody)
         {
             MailAddress from = new MailAddress(emailFrom, nameFrom);
             MailAddress to = new MailAddress(mailTo);
@@ -33,6 +35,28 @@ namespace TaskManager.Utils
                 Body = htmlBody,
                 IsBodyHtml = true
             };
+            try
+            {
+                client.Send(msg);
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
+        public bool SendFile(string mailTo, string title, string htmlBody, byte[] file, string filename)
+        {
+            MailAddress from = new MailAddress(emailFrom, nameFrom);
+            MailAddress to = new MailAddress(mailTo);
+            MailMessage msg = new MailMessage(from, to)
+            {
+                Subject = title,
+                Body = htmlBody,
+                IsBodyHtml = true
+            };
+            msg.Attachments.Add(new Attachment(new MemoryStream(file), filename));
             try
             {
                 client.Send(msg);

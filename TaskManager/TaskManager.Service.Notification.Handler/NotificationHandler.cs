@@ -65,7 +65,7 @@ namespace TaskManager.Service.Notification.Handler
             string title = $"Задача \"{taskTitle}\" была изменена.";
             string body = $"<h2>{title}<h2>";
 
-            return emailSender.SendAsync(adress, title, body);
+            return emailSender.Send(adress, title, body);
         }
 
         private List<string> GetEmailsForTask(int taskId)
