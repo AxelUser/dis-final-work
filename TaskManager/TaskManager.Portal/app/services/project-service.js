@@ -27,7 +27,7 @@
         }
 
         this.doExport = function (id) {
-            $http.get('/Projects/Export?id=' + id)
+            return $http.get('/Projects/Export?id=' + id)
         }
     };
 })();
