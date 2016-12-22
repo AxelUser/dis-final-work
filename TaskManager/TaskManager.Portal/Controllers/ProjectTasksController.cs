@@ -51,21 +51,6 @@ namespace TaskManager.Portal.Controllers
             if (ModelState.IsValid)
             {
                 db.ProjectTasks.Add(projectTask);
-                foreach (var i in projectTask.ExecutorRoles)
-                {
-                    try
-                    {
-                        db.Entry(i).State = EntityState.Modified;
-                    }
-                    catch (InvalidOperationException e)
-                    {
-                        try
-                        {
-                            db.Entry(i).State = EntityState.Added;
-                        }
-                        catch { }
-                    }
-                }
                 db.SaveChanges();
                 return Json(projectTask, JsonRequestBehavior.AllowGet);
             }
@@ -81,21 +66,6 @@ namespace TaskManager.Portal.Controllers
             if (ModelState.IsValid)
             {
                 db.Entry(projectTask).State = EntityState.Modified;
-                foreach (var i in projectTask.ExecutorRoles)
-                {
-                    try
-                    {
-                        db.Entry(i).State = EntityState.Modified;
-                    }
-                    catch (InvalidOperationException e)
-                    {
-                        try
-                        {
-                            db.Entry(i).State = EntityState.Added;
-                        }
-                        catch { }
-                    }
-                }
                 db.SaveChanges();
 
                 return Json(projectTask, JsonRequestBehavior.AllowGet);
