@@ -2,21 +2,24 @@
     <h3>
         {{formTitle}}
     </h3>
-    <form name="projectForm" id="projectForm">
+    <form name="taskForm" id="taskForm">
         <fieldset ng-disabled="controllerType == 'view'">
             <div class="form-group">
                 <label for="Title">Название задачи</label>
                 <input type="text" class="form-control" id="Title" placeholder="Название задачи"
+                       required
                        ng-model="entityTask.Title">
             </div>
             <div class="form-group">
                 <label for="title">Название проекта</label>
                 <input type="number" class="form-control" id="EstimatedDifficult" placeholder="Количество очков"
+                       required
                        ng-model="entityTask.EstimatedDifficult">
             </div>
             <div class="form-group">
                 <label for="TaskStatusType">Статус</label>
                 <select class="form-control" id="TaskStatusType" ng-model="entityTask.TaskStatusType"
+                        required
                         ng-options="status.Caption for status in statuses track by status.Id">
                 </select>
             </div>
@@ -57,7 +60,8 @@
         </fieldset>
         <div style="height: 50px;">
             <div class="pull-right">
-                <button type="button" class="btn btn-success pull-left"
+                <button type="submit" class="btn btn-success pull-left"
+                        ng-disabled="taskForm.$invalid"
                         style="margin-right: 15px"
                          ng-click="saveTask()">
                     <i class="glyphicon glyphicon-ok"></i>

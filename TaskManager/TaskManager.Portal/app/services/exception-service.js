@@ -10,10 +10,10 @@
 
         util.alert = function (title, text) {
             if (!title || !text)
-                alertDefault()
+                util.alertDefault()
             else
                 ngDialog.open({
-                    template: '<div><div class="row"><h3>{{ngDialogData.title}}</h3></div><div><p>{{ngDialogData.text}}</p></div></div>',
+                    template: '<div style="margin-left: 50px"><div class="row"><h3>{{ngDialogData.title}}</h3></div><div><p>{{ngDialogData.text}}</p></div></div>',
                     plain: true,
                     data: { title: title, text: text }
                 });
