@@ -7,17 +7,17 @@
         .config(['$locationProvider', '$routeProvider',
             function config($locationProvider, $routeProvider) {
                 $routeProvider
-                    .when('/', {
-                        title: 'Главная страница',
-                        templateUrl: 'app/views/main.html',
-                        controller: 'MainController'
-                    })
+                    //.when('/', {
+                    //    title: 'Главная страница',
+                    //    templateUrl: 'app/views/main.html',
+                    //    controller: 'MainController'
+                    //})
                     .when('/projects', {
                         title: 'Проекты',
                         templateUrl: 'app/views/projects.html',
                         controller: 'ProjectsController'
                     })
-                    .otherwise('/');
+                    .otherwise('/projects');
             }])
         .config(['ngDialogProvider', function (ngDialogProvider) {
             ngDialogProvider.setDefaults({
