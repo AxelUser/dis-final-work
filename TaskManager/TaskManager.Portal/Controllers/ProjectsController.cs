@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using TaskManager.DAL.Entities;
+using TaskManager.Portal.ServiceReferenceProxy;
 
 namespace TaskManager.Portal.Controllers
 {
@@ -127,6 +128,8 @@ namespace TaskManager.Portal.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
+            ProxyServiceClient client = new ProxyServiceClient();
+            client.ReportAsync((int) id);
             return null;
         }
 

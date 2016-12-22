@@ -17,6 +17,6 @@ namespace TaskManager.DAL.Entities
         public string Name { get; set; }
         [Required]
         public string Caption { get; set; }
-        public virtual IEnumerable<User> Users { get; set; }
+        public virtual ICollection<User> Users { get; set; }
     }
 }

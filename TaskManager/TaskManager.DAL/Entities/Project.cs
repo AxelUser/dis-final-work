@@ -15,6 +15,6 @@ namespace TaskManager.DAL.Entities
         public string Title { get; set; }
         public int UserId { get; set; }
         public virtual User User { get; set; }
-        public virtual IEnumerable<ProjectTask> ProjectTasks { get; set; }
+        public virtual ICollection<ProjectTask> ProjectTasks { get; set; }
     }
 }

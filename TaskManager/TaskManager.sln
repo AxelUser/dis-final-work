@@ -19,6 +19,18 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaskManager.DAL", "TaskMana
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaskManager.Utils", "TaskManager.Utils\TaskManager.Utils.csproj", "{6BE54E95-5731-458C-A6A4-D37F449F0475}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaskManager.Portal.BLL", "TaskManager.Portal.BLL\TaskManager.Portal.BLL.csproj", "{94925898-4CB4-46E1-8943-1F00508EDF1E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaskManager.ServiceProxy", "TaskManager.ServiceProxy\TaskManager.ServiceProxy.csproj", "{076E8E95-39F8-49B2-8CD9-C14FA6F25C8A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaskManager.Service.Notification.Handler", "TaskManager.Service.Notification.Handler\TaskManager.Service.Notification.Handler.csproj", "{E8273389-886D-4468-B77F-6A52E2FDA097}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaskManager.Service.Notification.WinService", "TaskManager.Service.Notification.WinService\TaskManager.Service.Notification.WinService.csproj", "{D9EADD34-EABE-4D8C-8867-24C9E8B31A7E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaskManager.Service.Report.Handler", "TaskManager.Service.Report.Handler\TaskManager.Service.Report.Handler.csproj", "{5C54B752-B0B6-4C35-8F94-DBE67F89E997}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaskManager.Service.Report.WinService", "TaskManager.Service.Report.WinService\TaskManager.Service.Report.WinService.csproj", "{6818EA4E-DE30-4C31-9680-436423B33899}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -45,6 +57,30 @@ Global
 		{6BE54E95-5731-458C-A6A4-D37F449F0475}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6BE54E95-5731-458C-A6A4-D37F449F0475}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6BE54E95-5731-458C-A6A4-D37F449F0475}.Release|Any CPU.Build.0 = Release|Any CPU
+		{94925898-4CB4-46E1-8943-1F00508EDF1E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{94925898-4CB4-46E1-8943-1F00508EDF1E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{94925898-4CB4-46E1-8943-1F00508EDF1E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{94925898-4CB4-46E1-8943-1F00508EDF1E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{076E8E95-39F8-49B2-8CD9-C14FA6F25C8A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{076E8E95-39F8-49B2-8CD9-C14FA6F25C8A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{076E8E95-39F8-49B2-8CD9-C14FA6F25C8A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{076E8E95-39F8-49B2-8CD9-C14FA6F25C8A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E8273389-886D-4468-B77F-6A52E2FDA097}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E8273389-886D-4468-B77F-6A52E2FDA097}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E8273389-886D-4468-B77F-6A52E2FDA097}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E8273389-886D-4468-B77F-6A52E2FDA097}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D9EADD34-EABE-4D8C-8867-24C9E8B31A7E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D9EADD34-EABE-4D8C-8867-24C9E8B31A7E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D9EADD34-EABE-4D8C-8867-24C9E8B31A7E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D9EADD34-EABE-4D8C-8867-24C9E8B31A7E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5C54B752-B0B6-4C35-8F94-DBE67F89E997}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5C54B752-B0B6-4C35-8F94-DBE67F89E997}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5C54B752-B0B6-4C35-8F94-DBE67F89E997}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5C54B752-B0B6-4C35-8F94-DBE67F89E997}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6818EA4E-DE30-4C31-9680-436423B33899}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6818EA4E-DE30-4C31-9680-436423B33899}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6818EA4E-DE30-4C31-9680-436423B33899}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6818EA4E-DE30-4C31-9680-436423B33899}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -55,5 +91,6 @@ Global
 		{FE3A5B21-E346-4607-BBBD-A3CEA2B8DFC1} = {15311E2E-0731-4F51-A387-B5F62963666B}
 		{85CC861C-20D9-402A-89A5-0551DF215510} = {B5EBD87D-B0E5-4274-819D-74B0AD427931}
 		{6BE54E95-5731-458C-A6A4-D37F449F0475} = {B5EBD87D-B0E5-4274-819D-74B0AD427931}
+		{94925898-4CB4-46E1-8943-1F00508EDF1E} = {309BEC56-234A-446D-A28B-7F97E7D5795D}
 	EndGlobalSection
 EndGlobal
