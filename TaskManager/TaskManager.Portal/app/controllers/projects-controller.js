@@ -9,7 +9,7 @@
         (function init() {
             ProjectService.getProjects().then(
                 function (response) {
-                    var data = response;
+                    var data = response.data;
                     $scope.projects = data;
                 },
                 function (error) {
@@ -71,11 +71,18 @@
         };
 
         $scope.removeProject = function (project) {
-            ProjectService.removeProject()
+            ProjectService.removeProject(project.Id)
                 .then(function (response) {
-
+                    var index = -1;
+                    $scope.projects.forEach(function (item, i) {
+                        if (item.Id == data.value.Id) {
+                            index = i;
+                        }
+                    });
+                    $scope.projects.splice(index, 1);
                 },
                 function (error) {
+
                 });
         };
     };

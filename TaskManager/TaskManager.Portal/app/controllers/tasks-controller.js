@@ -9,7 +9,7 @@
         (function init() {
             TaskService.getTasks().then(
                 function (response) {
-                    var data = response;
+                    var data = response.data;
                     $scope.tasks = data;
                 },
                 function (error) {

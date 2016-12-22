@@ -18,7 +18,7 @@
 
             StatusService.getStatuses()
                 .then(function (response) {
-                    var data = response;
+                    var data = response.data;
                     $scope.statuses = data;
                 },
                 function (error) {
@@ -28,9 +28,13 @@
         })();
 
         $scope.saveTask = function () {
-            //ProjectService.saveProject($scope.entityTask);
-            $scope.entityTask.Id = Math.floor(Math.random() * 10000);
-            $scope.closeThisDialog($scope.entityTask);
+            TaskService.saveTask($scope.entityTask).then(
+                function (response) {
+                    $scope.closeThisDialog(response.data);
+                },
+                function (error) {
+
+                });
         };
 
         $scope.newExecutor = function () {

@@ -18,7 +18,7 @@
 
             UserService.getUsers()
                 .then(function (response) {
-                    var data = response;
+                    var data = response.data;
                     $scope.users = data;
                 },
                 function (error) {
@@ -27,7 +27,7 @@
 
             RoleService.getRoles()
                 .then(function (response) {
-                    var data = response;
+                    var data = response.data;
                     $scope.roles = data;
                 },
                 function (error) {
