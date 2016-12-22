@@ -36,6 +36,7 @@
                         </td>
                         <td style="width: 100px;" ng-if="controllerType != 'view'">
                             <button type="button" class="btn btn-sm btn-success pull-right"
+                                    ng-disabled="controllerType != 'view'"
                                     style="margin-right: 5px;"
                                     ng-click="newExecutor()">
                                 <i class="glyphicon glyphicon-plus"></i>

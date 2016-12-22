@@ -21,7 +21,7 @@
 
         util.alertDefault = function (title, text) {
             ngDialog.open({
-                template: '<div><div class="row"><h3 class="color-red">Ошибка</h3></div><div><p class="color-red">Возникла непредвиденная ошибка. <br> Попробуйте повторить операцию позднее</p></div></div>',
+                template: '<div style="margin-left: 50px"><div class="row"><h3 class="color-red">Ошибка</h3></div><div><p class="color-red">Возникла непредвиденная ошибка. <br> Попробуйте повторить операцию позднее</p></div></div>',
                 plain: true,
                 data: { title: title, text: text }
             });

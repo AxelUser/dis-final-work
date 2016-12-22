@@ -47,10 +47,13 @@ namespace TaskManager.Portal.Controllers
         [HttpPost]
         public ActionResult Create(ProjectTask projectTask)
         {
-            //projectTask.CreationDate = DateTime.Now;
-            //projectTask.UpdateDate = DateTime.Now;
             if (ModelState.IsValid)
             {
+                if (projectTask.TaskStatusType != null)
+                {
+                    projectTask.TaskStatusTypeId = projectTask.TaskStatusType.Id;
+                    projectTask.TaskStatusType = null;
+                }
                 db.ProjectTasks.Add(projectTask);
                 db.SaveChanges();
                 return Json(projectTask, JsonRequestBehavior.AllowGet);
@@ -66,6 +69,11 @@ namespace TaskManager.Portal.Controllers
         {
             if (ModelState.IsValid)
             {
+                if (projectTask.TaskStatusType != null)
+                {
+                    projectTask.TaskStatusTypeId = projectTask.TaskStatusType.Id;
+                    projectTask.TaskStatusType = null;
+                }
                 db.Entry(projectTask).State = EntityState.Modified;
                 db.SaveChanges();
                 ProxyServiceClient client = new ProxyServiceClient();
